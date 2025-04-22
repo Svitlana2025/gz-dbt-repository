@@ -51,142 +51,77 @@
           - unique:
              column_name: orders_id
  models:
-   - name: int_sales_margin
-     description: margin calculation per order
-     columns:
-       - name: orders_id
-         description: orders key
-         tests:
-           - not_null
-       - name: products_id
-         description: products key
-         tests:
-           - not_null
-       - name: margin
-         description: Margin = Revenue - Purchase_cost
-         tests:
-           - not_null
-       - name: Purchase_cost
-         description: Purchase_cost = Quantity * Purchase_price
-         tests:
-           - not_null
-       - name: date_date
-         description: date of the order
-         tests:
-           - not_null
-       - name: revenue
-         description: sum of revenue per order
-         tests:
-           - not_null
-       - name: quantity
-         description: sum of quantity per order
-         tests:
-           - not_null
-     tests:
-       - unique:
-           column_name: "(orders_id || '-' || products_id)"
-    # Staging #
-   # ...snip...
+  - name: int_orders_margin
+    description: Table with calculated margin and purchase cost per order
+    columns:
+      - name: orders_id
+        description: Unique identifier of the order
+        tests:
+          - not_null
+          - unique
+      - name: date_date
+        description: Date of the order
+        tests:
+          - not_null
+      - name: revenue
+        description: Total revenue of the order
+        tests:
+          - not_null
+      - name: quantity
+        description: Total quantity of products in the order
+        tests:
+          - not_null
+      - name: purchase_cost
+        description: Total purchase cost of products in the order
+        tests:
+          - not_null
+      - name: margin
+        description: Revenue minus purchase cost
+        tests:
+          - not_null
 
-   # Intermediate #
-   - name: int_orders_margin
-     description: margin calculation per order
-     columns:
-       - name: orders_id
-         description: primary key
-         tests:
-           - unique
-           - not_null
-       - name: margin
-         description: margin = revenue - purchase_cost
-         tests:
-           - not_null
-       - name: Purchase_cost
-         description: purchase_cost = quantity * purchase_price
-         tests:
-           - not_null
-       - name: date_date
-         description: date of the order
-         tests:
-           - not_null
-       - name: revenue
-         description: sum of revenue per order
-         tests:
-           - not_null
-       - name: quantity
-         description: sum of quantity per order
-         tests:
-           - not_null
+  - name: int_orders_operational
+    description: Table with operational margin per order
+    columns:
+      - name: orders_id
+        description: Unique identifier of the order
+        tests:
+          - not_null
+          - unique
+      - name: date_date
+        description: Date of the order
+        tests:
+          - not_null
+      - name: operational_margin
+        description: Operational margin of the order
+        tests:
+          - not_null
 
-   - name: int_sales_margin
-     description: margin calculation per order line / product sales
-     columns:
-       - name: orders_id
-         description: orders key
-         tests:
-           - not_null
-       - name: products_id
-         description: products key
-         tests:
-           - not_null
-       - name: margin
-         description: margin = revenue - purchase_cost
-         tests:
-           - not_null
-       - name: Purchase_cost
-         description: purchase_cost = quantity * purchase_price
-         tests:
-           - not_null
-       - name: date_date
-         description: date of the order
-         tests:
-           - not_null
-       - name: revenue
-         description: sum of revenue per order
-         tests:
-           - not_null
-       - name: quantity
-         description: sum of quantity per order
-         tests:
-           - not_null
-     tests:
-       - unique:
-           column_name: "(orders_id || '-' || products_id)"
-
-   - name: int_orders_operational
-     description: operational margin calculation per order
-     columns:
-       - name: orders_id
-         description: primary key
-         tests:
-           - unique
-           - not_null
-       - name: date_date
-         description: date of the order
-         tests:
-           - not_null
-       - name: operational_margin
-         description: operational_margin = margin + shipping_fee - logcost - ship_cost
-       - name: quantity
-         description: sum of quantity per order
-         tests:
-           - not_null
-       - name: revenue
-         description: sum of revenue per order
-         tests:
-           - not_null
-       - name: purchase_cost
-         description: purchase_cost = quantity * purchase_price
-         tests:
-           - not_null
-       - name: margin
-         description: margin = revenue - purchase_cost
-         tests:
-           - not_null
-       - name: shipping_fee
-         description: the price the customer pays for shipping
-       - name: logcost
-         description: the cost of preparing the parcel in the distribution centre/warehouse
-       - name: ship_cost
-         description: shipping cost paid by Greenweez to the carrier/logistics provider
-     
+  - name: finance_days
+    description: Daily aggregated financial data for finance team
+    columns:
+      - name: date_date
+        description: Date of the transactions
+        tests:
+          - not_null
+          - unique
+      - name: nb_transactions
+        description: Number of distinct transactions on the day
+        tests:
+          - not_null
+      - name: revenue
+        description: Total revenue of the day
+        tests:
+          - not_null
+      - name: average_basket
+        description: Average revenue per order
+        tests:
+          - not_null
+      - name: margin
+        description: Total margin of the day
+        tests:
+          - not_null
+      - name: operational_margin
+        description: Total operational margin of the day
+        tests:
+          - not_null
