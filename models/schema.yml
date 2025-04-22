@@ -23,8 +23,7 @@
              description: quantity of product
         tests:
           - unique:
-            column_name: "(orders_id ||'-'|| pdt_id )"
-         
+              column_name: "(orders_id || '-' || pdt_id )"
       - name: product
         identifier: raw_gz_product 
         description: products of Greenweez
@@ -36,7 +35,6 @@
         tests:
           - unique:
              column_name: products_id
-      
       - name: ship
         identifier: raw_gz_ship
         description: shipping of orders of Greenweez
