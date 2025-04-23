@@ -231,3 +231,25 @@
     tests:
           - unique:
               column_name: "(date_date || '-' || campaign_key )"
+  - name: int_campaigns_day
+    description: Daily aggregated campaings performance
+    columns:
+      - name: date_date
+        description: date of campaigns
+        tests:
+          - not_null
+          - unique
+      - name: ads_cost
+        description: total cost
+        tests:
+          - not_null
+      - name: ads_impression
+        description: total impression
+        tests:
+          - not_null
+      - name: ads_clicks
+        description: total clicks
+        tests:
+          - not_null
+
+        
