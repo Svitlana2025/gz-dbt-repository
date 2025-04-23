@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 SELECT
   DATE_TRUNC(date_date, MONTH) AS datemonth,
   SUM(ads_margin) AS ads_margin,
