@@ -50,6 +50,78 @@
         tests:
           - unique:
              column_name: orders_id
+      - name: adwords
+        identifier: raw_gz_adwords
+        description: ad campaign of Greenweez runs in adwords 
+        columns:
+           - name: date_date
+             description: date of ad campaign
+           - name: paid_source
+             description: source of campaign
+           - name: campaign_key
+             description: key of campaign
+           - name: camPGN_name
+             description: name of campaign
+           - name: ads_cost
+             description: cost of ads
+           - name: impression
+             description: number of impressions
+           - name: click
+             description: number of clicks
+      - name: bing
+        identifier: raw_gz_bing
+        description: ad campaign of Greenweez runs in bing 
+        columns:
+           - name: date_date
+             description: date of ad campaign
+           - name: paid_source
+             description: source of campaign
+           - name: campaign_key
+             description: key of campaign
+           - name: camPGN_name
+             description: name of campaign
+           - name: ads_cost
+             description: cost of ads
+           - name: impression
+             description: number of impressions
+           - name: click
+             description: number of clicks 
+      - name: criteo
+        identifier: raw_gz_criteo
+        description: ad campaign of Greenweez runs in criteo 
+        columns:
+           - name: date_date
+             description: date of ad campaign
+           - name: paid_source
+             description: source of campaign
+           - name: campaign_key
+             description: key of campaign
+           - name: camPGN_name
+             description: name of campaign
+           - name: ads_cost
+             description: cost of ads
+           - name: impression
+             description: number of impressions
+           - name: click
+             description: number of clicks 
+      - name: facebook
+        identifier: raw_gz_facebook
+        description: ad campaign of Greenweez runs in facebook 
+        columns:
+           - name: date_date
+             description: date of ad campaign
+           - name: paid_source
+             description: source of campaign
+           - name: campaign_key
+             description: key of campaign
+           - name: camPGN_name
+             description: name of campaign
+           - name: ads_cost
+             description: cost of ads
+           - name: impression
+             description: number of impressions
+           - name: click
+             description: number of clicks
  models:
   - name: int_orders_margin
     description: Table with calculated margin and purchase cost per order
@@ -125,3 +197,171 @@
         description: Total operational margin of the day
         tests:
           - not_null
+  - name: int_campaigns
+    description: Table with ad campaigns
+    columns:
+      - name: date_date
+        description: date of campaign
+        tests:
+          - not_null
+      - name: paid_source
+        description: source of campaign
+        tests:
+          - not_null
+      - name: campaign_key
+        description: key of campaign
+        tests:
+          - not_null
+      - name: campaign_name
+        description: name of campaign
+        tests:
+          - not_null
+      - name: ads_cost
+        description: cost of ads
+        tests:
+          - not_null
+      - name: impression
+        description: number of impressions
+        tests:
+          - not_null
+      - name: click
+        description: number of clicks
+        tests:
+          - not_null
+    tests:
+          - unique:
+              column_name: "(date_date || '-' || campaign_key )"
+  - name: int_campaigns_day
+    description: Daily aggregated campaings performance
+    columns:
+      - name: date_date
+        description: date of campaigns
+        tests:
+          - not_null
+          - unique
+      - name: ads_cost
+        description: total cost
+        tests:
+          - not_null
+      - name: ads_impression
+        description: total impression
+        tests:
+          - not_null
+      - name: ads_clicks
+        description: total clicks
+        tests:
+          - not_null
+  - name: finance_campaigns_day
+    description: Financial and  campaings KPIs per day
+    columns:
+      - name: date_date
+        description: Date of the transactions
+        tests:
+          - not_null
+          - unique
+      - name: ads_margin
+        description: Total margin of ads
+        tests:
+          - unique
+      - name: average_basket
+        description: Average revenue per order
+        tests:
+          - not_null
+      - name: operational_margin
+        description: Total operational margin of the day
+        tests:
+          - not_null
+      - name: ads_cost
+        description: total cost
+        tests:
+          - not_null
+      - name: ads_impression
+        description: total impression
+        tests:
+          - not_null
+      - name: ads_clicks
+        description: total clicks
+        tests:
+          - not_null
+      - name: quantity
+        description: Number of products
+        tests:
+          - not_null
+      - name: revenue
+        description: Total revenue of the day
+        tests:
+          - not_null
+      - name: purchase_cost
+        description: Total cost of purchases of the day
+        tests:
+          - not_null
+      - name: margin
+        description: Total margin of the day
+        tests:
+          - not_null
+      - name: shipping_fee
+        description: Total shipping fees of the day
+        tests:
+          - not_null
+      - name: logcost
+        description: Total logcost of the day
+        tests:
+          - not_null
+  - name: finance_campaigns_month
+    description: Financial and  campaings KPIs per month
+    columns:
+      - name: datemonth
+        description: Month of the transactions
+        tests:
+          - not_null
+          - unique
+      - name: ads_margin
+        description: Total margin of ads
+        tests:
+          - unique
+      - name: average_basket
+        description: Average revenue per order
+        tests:
+          - not_null
+      - name: operational_margin
+        description: Total operational margin of the day
+        tests:
+          - not_null
+      - name: ads_cost
+        description: total cost
+        tests:
+          - not_null
+      - name: ads_impression
+        description: total impression
+        tests:
+          - not_null
+      - name: ads_clicks
+        description: total clicks
+        tests:
+          - not_null
+      - name: quantity
+        description: Number of products
+        tests:
+          - not_null
+      - name: revenue
+        description: Total revenue of the day
+        tests:
+          - not_null
+      - name: purchase_cost
+        description: Total cost of purchases of the day
+        tests:
+          - not_null
+      - name: margin
+        description: Total margin of the day
+        tests:
+          - not_null
+      - name: shipping_fee
+        description: Total shipping fees of the day
+        tests:
+          - not_null
+      - name: logcost
+        description: Total logcost of the day
+        tests:
+          - not_null
+
+        
