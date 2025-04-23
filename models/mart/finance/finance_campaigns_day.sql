@@ -1,3 +1,5 @@
+{{ config(materialized='view') }}
+
 select c.date_date,
  round((f.operational_margin - c.ads_cost), 1) AS ads_margin,
  f.average_basket,
