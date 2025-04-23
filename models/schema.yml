@@ -307,5 +307,61 @@
         description: Total logcost of the day
         tests:
           - not_null
+  - name: finance_campaigns_month
+    description: Financial and  campaings KPIs per month
+    columns:
+      - name: datemonth
+        description: Month of the transactions
+        tests:
+          - not_null
+          - unique
+      - name: ads_margin
+        description: Total margin of ads
+        tests:
+          - unique
+      - name: average_basket
+        description: Average revenue per order
+        tests:
+          - not_null
+      - name: operational_margin
+        description: Total operational margin of the day
+        tests:
+          - not_null
+      - name: ads_cost
+        description: total cost
+        tests:
+          - not_null
+      - name: ads_impression
+        description: total impression
+        tests:
+          - not_null
+      - name: ads_clicks
+        description: total clicks
+        tests:
+          - not_null
+      - name: quantity
+        description: Number of products
+        tests:
+          - not_null
+      - name: revenue
+        description: Total revenue of the day
+        tests:
+          - not_null
+      - name: purchase_cost
+        description: Total cost of purchases of the day
+        tests:
+          - not_null
+      - name: margin
+        description: Total margin of the day
+        tests:
+          - not_null
+      - name: shipping_fee
+        description: Total shipping fees of the day
+        tests:
+          - not_null
+      - name: logcost
+        description: Total logcost of the day
+        tests:
+          - not_null
 
         
