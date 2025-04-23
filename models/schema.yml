@@ -50,6 +50,78 @@
         tests:
           - unique:
              column_name: orders_id
+      - name: adwords
+        identifier: raw_gz_adwords
+        description: ad campaign of Greenweez runs in adwords 
+        columns:
+           - name: date_date
+             description: date of ad campaign
+           - name: paid_source
+             description: source of campaign
+           - name: campaign_key
+             description: key of campaign
+           - name: camPGN_name
+             description: name of campaign
+           - name: ads_cost
+             description: cost of ads
+           - name: impression
+             description: number of impressions
+           - name: click
+             description: number of clicks
+      - name: bing
+        identifier: raw_gz_bing
+        description: ad campaign of Greenweez runs in bing 
+        columns:
+           - name: date_date
+             description: date of ad campaign
+           - name: paid_source
+             description: source of campaign
+           - name: campaign_key
+             description: key of campaign
+           - name: camPGN_name
+             description: name of campaign
+           - name: ads_cost
+             description: cost of ads
+           - name: impression
+             description: number of impressions
+           - name: click
+             description: number of clicks 
+      - name: criteo
+        identifier: raw_gz_criteo
+        description: ad campaign of Greenweez runs in criteo 
+        columns:
+           - name: date_date
+             description: date of ad campaign
+           - name: paid_source
+             description: source of campaign
+           - name: campaign_key
+             description: key of campaign
+           - name: camPGN_name
+             description: name of campaign
+           - name: ads_cost
+             description: cost of ads
+           - name: impression
+             description: number of impressions
+           - name: click
+             description: number of clicks 
+      - name: facebook
+        identifier: raw_gz_facebook
+        description: ad campaign of Greenweez runs in facebook 
+        columns:
+           - name: date_date
+             description: date of ad campaign
+           - name: paid_source
+             description: source of campaign
+           - name: campaign_key
+             description: key of campaign
+           - name: camPGN_name
+             description: name of campaign
+           - name: ads_cost
+             description: cost of ads
+           - name: impression
+             description: number of impressions
+           - name: click
+             description: number of clicks
  models:
   - name: int_orders_margin
     description: Table with calculated margin and purchase cost per order
