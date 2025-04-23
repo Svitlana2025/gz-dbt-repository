@@ -197,3 +197,37 @@
         description: Total operational margin of the day
         tests:
           - not_null
+  - name: int_campaigns
+    description: Table with ad campaigns
+    columns:
+      - name: date_date
+        description: date of campaign
+        tests:
+          - not_null
+      - name: paid_source
+        description: source of campaign
+        tests:
+          - not_null
+      - name: campaign_key
+        description: key of campaign
+        tests:
+          - not_null
+      - name: campaign_name
+        description: name of campaign
+        tests:
+          - not_null
+      - name: ads_cost
+        description: cost of ads
+        tests:
+          - not_null
+      - name: impression
+        description: number of impressions
+        tests:
+          - not_null
+      - name: click
+        description: number of clicks
+        tests:
+          - not_null
+    tests:
+          - unique:
+              column_name: "(date_date || '-' || campaign_key )"
